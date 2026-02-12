@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bateria no Louvor | Domine a Bateria com Excelência</title>
+    <title>Bateria no Louvor | Domine o Altar com Excelência</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -279,7 +279,7 @@
             transition: var(--transition);
         }
         .netflix-card:hover { transform: scale(1.04); z-index: 10; }
-        .netflix-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+        .netflix-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
         .netflix-content {
             position: absolute;
             bottom: 0; left: 0; right: 0;
@@ -314,12 +314,26 @@
         .pain-card h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; color: #fff; line-height: 1.3; }
         .pain-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
 
-        /* Testimonials */
+        /* Testimonials (CORRIGIDO) */
         .testimonials-section { padding: 100px 0; background: radial-gradient(circle at top, #1a0005 0%, #000); text-align: center; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 50px; }
-        .testimonial-img-wrapper { background: var(--bg-card); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255, 184, 0, 0.1); transition: var(--transition); line-height: 0; }
-        .testimonial-img-wrapper:hover { transform: translateY(-10px) scale(1.02); border-color: var(--primary); box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
-        .testimonial-img-wrapper img { width: 100%; height: auto; display: block; }
+        .testimonials-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            margin-top: 50px; 
+            align-items: start; /* Impede que os cards estiquem para a altura da linha */
+        }
+        .testimonial-img-wrapper { 
+            background: transparent; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            border: none;
+            transition: var(--transition); 
+            line-height: 0; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .testimonial-img-wrapper:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        .testimonial-img-wrapper img { width: 100%; height: auto; display: block; border-radius: 15px; }
 
         /* Curriculum */
         .curriculum-section { padding: 120px 0; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1543443258-92b04ad5ecf5?auto=format&fit=crop&q=80&w=2070') no-repeat center center/cover; position: relative; }
@@ -374,6 +388,48 @@
         .faq-item.active .faq-toggle { transform: rotate(45deg); }
         .faq-item.active .faq-question { color: var(--primary); }
 
+        /* Sales Notification */
+        .sales-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 9999;
+            transform: translateX(-150%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 320px;
+            border-left: 4px solid #3eb05e; /* Kiwify Green */
+        }
+        .sales-notification.visible-toast {
+            transform: translateX(0);
+        }
+        .sales-notification img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        .sales-notif-content p {
+            line-height: 1.2;
+            color: #111;
+            font-size: 0.85rem;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .sales-notif-content strong {
+            font-weight: 700;
+        }
+        .sales-notif-time {
+            font-size: 0.75rem !important;
+            color: #666 !important;
+            margin-top: 2px !important;
+        }
+
         /* Animations */
         .pulse { animation: pulse-animation 2s infinite; }
         @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 184, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0); } }
@@ -403,6 +459,7 @@
             .faq-answer-inner { padding: 0 20px 20px; } 
             .stats-grid { flex-direction: column; gap: 40px; }
             .netflix-grid { grid-template-columns: 1fr; }
+            .sales-notification { bottom: 10px; left: 10px; right: 10px; width: auto; max-width: none; }
         }
     </style>
 <script type="importmap">
@@ -424,7 +481,7 @@
 
     <nav id="navbar">
         <div class="container nav-content">
-            <div class="logo">BATERIA<span>NO LOUVOR</span></div>
+            <div class="logo" style="font-size: 1.4rem;">BATERIA<span>NO LOUVOR</span></div>
             <a href="#preço" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Garantir 50% OFF de Desconto</a>
         </div>
     </nav>
@@ -520,33 +577,32 @@
             <div class="netflix-grid fade-in">
                 <!-- Card 1 -->
                 <div class="netflix-card">
-                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=600" alt="Teoria Musical">
+                    <img src="https://i.pinimg.com/736x/a5/ac/3a/a5ac3a8d8582665dd782420d30cb277d.jpg" alt="Teoria Musical">
                     <div class="netflix-content">
-                        <h5>TEORIA MUSICAL</h5>
                         <p>+10 aulas do zero ao avançado na teoria musical + PDF para estudos guiados.</p>
                     </div>
                 </div>
                 <!-- Card 2 -->
                 <div class="netflix-card">
-                    <img src="https://images.unsplash.com/photo-1543443258-92b04ad5ecf5?auto=format&fit=crop&q=80&w=600" alt="Rudimentos">
+                    <img src="https://i.pinimg.com/736x/6a/ee/77/6aee776b036b99bcf49216651359d8ea.jpg" alt="Rudimentos">
                     <div class="netflix-content">
-                        <h5>RUDIMENTOS</h5>
+                        
                         <p>+10 aulas apresentando e estudando corretamente os 40 rudimentos básicos.</p>
                     </div>
                 </div>
                 <!-- Card 3 -->
                 <div class="netflix-card">
-                    <img src="https://images.unsplash.com/photo-1594623185934-542b474d7c71?auto=format&fit=crop&q=80&w=600" alt="Viradas Básicas">
+                    <img src="https://i.pinimg.com/736x/a2/e0/6c/a2e06cc95a0bf592aed7ce88f1777482.jpg" alt="Viradas Básicas">
                     <div class="netflix-content">
-                        <h5>VIRADAS BÁSICAS</h5>
+                    
                         <p>9 aulas sobre como criar viradas, bumbo nas viradas, distribuições e muito mais.</p>
                     </div>
                 </div>
                 <!-- Card 4 -->
                 <div class="netflix-card">
-                    <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&q=80&w=600" alt="Gospel Chops">
+                    <img src="https://i.pinimg.com/736x/99/94/97/9994978cfd82e3060e1765909c452e53.jpg" alt="Gospel Chops">
                     <div class="netflix-content">
-                        <h5>50 VIRADAS GOSPEL CHOPS</h5>
+                        
                         <p>Explicadas detalhadamente, com o tempo, rudimentos e o jeito certo de aplicar.</p>
                     </div>
                 </div>
@@ -680,12 +736,10 @@
             </div>
 
             <div class="testimonials-grid">
-                <div class="testimonial-img-wrapper fade-in"><img src="https://via.placeholder.com/600x400?text=Print+de+Feedback+01" alt="Feedback"></div>
-                <div class="testimonial-img-wrapper fade-in"><img src="https://via.placeholder.com/600x400?text=Print+de+Feedback+02" alt="Feedback"></div>
-                <div class="testimonial-img-wrapper fade-in"><img src="https://via.placeholder.com/600x400?text=Print+de+Feedback+03" alt="Feedback"></div>
-                <div class="testimonial-img-wrapper fade-in"><img src="https://via.placeholder.com/600x400?text=Print+de+Feedback+04" alt="Feedback"></div>
-                <div class="testimonial-img-wrapper fade-in"><img src="https://via.placeholder.com/600x400?text=Print+de+Feedback+05" alt="Feedback"></div>
-                <div class="testimonial-img-wrapper fade-in"><img src="https://via.placeholder.com/600x400?text=Print+de+Feedback+06" alt="Feedback"></div>
+                <div class="testimonial-img-wrapper fade-in"><img src="https://storage.builderall.com//franquias/2/6250148/editor-html/11637669.jpeg" alt="Feedback"></div>
+                <div class="testimonial-img-wrapper fade-in"><img src="https://storage.builderall.com//franquias/2/6250148/editor-html/11637671.jpeg" alt="Feedback"></div>
+                <div class="testimonial-img-wrapper fade-in"><img src="https://storage.builderall.com//franquias/2/6250148/editor-html/11637675.jpeg" alt="Feedback"></div>
+                <div class="testimonial-img-wrapper fade-in"><img src="https://storage.builderall.com//franquias/2/6250148/editor-html/11637673.jpeg" alt="Feedback"></div>
             </div>
 
             <div style="text-align: center; margin-top: 60px;">
@@ -725,7 +779,7 @@
             </div>
             <div class="instructor-card fade-in">
                 <div class="instructor-img-container">
-                    <img src="https://images.unsplash.com/photo-1594623185934-542b474d7c71?auto=format&fit=crop&q=80&w=2070" alt="Emerson Felipe">
+                    <img src="https://i.pinimg.com/736x/da/b1/04/dab104807b5094061806f4453cc96294.jpg" alt="Emerson Felipe">
                 </div>
                 <div class="instructor-info">
                     <h3 class="instructor-name">Emerson Felipe</h3>
@@ -863,7 +917,7 @@
                 </div>
                 <div class="faq-item fade-in">
                     <div class="faq-question"><span>Por quanto tempo terei acesso ao curso?</span><div class="faq-toggle"></div></div>
-                    <div class="faq-answer"><div class="faq-answer-inner">O acesso é online e você poderá assistir às aulas pelo período informado na plataforma, podendo rever quantas vezes quiser.</div></div>
+                    <div class="faq-answer"><div class="faq-answer-inner">O acesso é online e você poderá assistir às aulas pelo período informado na plataforma da kiwify, podendo rever quantas vezes quiser.</div></div>
                 </div>
                 <div class="faq-item fade-in">
                     <div class="faq-question"><span>O curso tem certificado?</span><div class="faq-toggle"></div></div>
@@ -891,6 +945,15 @@
         </div>
     </footer>
 
+    <!-- Fake Sales Notification -->
+    <div id="sales-notification" class="sales-notification">
+        <img src="https://kiwify.com.br/.netlify/images?url=_astro%2Flogo.0cuMVBav.png&w=400&h=110" alt="Kiwify">
+        <div class="sales-notif-content">
+            <p><strong id="buyer-name">Nome</strong> comprou o curso</p>
+            <p class="sales-notif-time">Há <span id="buy-time">5 min</span> • <span id="pay-method">PIX</span></p>
+        </div>
+    </div>
+
     <script>
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
@@ -900,7 +963,7 @@
         });
 
         function startCountdown() {
-            let countDownDate = new Date().getTime() + (24 * 60 * 60 * 1000);
+            let countDownDate = new Date().getTime() + (19 * 60 * 60 * 1000) + (33 * 60 * 1000);
             setInterval(function() {
                 let now = new Date().getTime();
                 let distance = countDownDate - now;
@@ -929,6 +992,64 @@
             if(window.scrollY > 100) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
+
+        // Fake Sales Logic
+        const allFakeNames = [
+            "Lucas M.", "João P.", "Mateus S.", "Ana C.", "Pedro H.", 
+            "Davi L.", "Gabriel R.", "Rafael O.", "Thiago A.", "Felipe B.", 
+            "Bruno C.", "Daniel S.", "Marcos V.", "André L.", "Guilherme T.", 
+            "Julia M.", "Beatriz S.", "Mariana C.", "Larissa F.", "Camila R.", 
+            "Fernanda P.", "Amanda L.", "Ricardo J.", "Roberto K.", "Paulo M.", 
+            "Carlos E.", "Eduardo D.", "Vitor H.", "Gustavo N.", "Henrique O.",
+            "Samuel P.", "Leonardo B.", "Diego F.", "Renato G.", "Fábio S."
+        ];
+        
+        // Cópia para manipulação
+        let availableNames = [...allFakeNames];
+
+        const fakeTimes = ["2 min", "5 min", "12 min", "23 min", "45 min", "1 hora", "2 horas", "20 min", "1 hora"];
+        const fakeMethods = ["PIX", "Cartão de Crédito"];
+
+        function getUniqueName() {
+            if (availableNames.length === 0) {
+                // Se acabarem os nomes, recarrega a lista para continuar o loop infinito,
+                // mas na prática para o usuário parece infinito sem repetição imediata.
+                availableNames = [...allFakeNames];
+            }
+            const randomIndex = Math.floor(Math.random() * availableNames.length);
+            const name = availableNames[randomIndex];
+            availableNames.splice(randomIndex, 1); // Remove o nome usado do array
+            return name;
+        }
+
+        function showSalesNotification() {
+            const notif = document.getElementById('sales-notification');
+            const nameEl = document.getElementById('buyer-name');
+            const timeEl = document.getElementById('buy-time');
+            const methodEl = document.getElementById('pay-method');
+
+            // Set unique name
+            nameEl.innerText = getUniqueName();
+            
+            // Random time and method
+            timeEl.innerText = fakeTimes[Math.floor(Math.random() * fakeTimes.length)];
+            methodEl.innerText = fakeMethods[Math.floor(Math.random() * fakeMethods.length)];
+
+            // Show notification
+            notif.classList.add('visible-toast');
+
+            // Hide after 4 seconds
+            setTimeout(() => {
+                notif.classList.remove('visible-toast');
+            }, 4000);
+
+            // Reschedule next notification (random interval between 15s and 45s)
+            const nextInterval = Math.floor(Math.random() * (45000 - 15000 + 1) + 15000);
+            setTimeout(showSalesNotification, nextInterval);
+        }
+
+        // Start initial notification after 5 seconds
+        setTimeout(showSalesNotification, 5000);
     </script>
 </body>
 </html>
